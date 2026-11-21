@@ -36,7 +36,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal = "foot"
-local fileManager = "dolphin"
+local fileManager = "thunar"
 local menu = "pkill wofi || wofi --show drun"
 
 
@@ -377,6 +377,7 @@ hl.window_rule({
 -------------------------------
 hl.on("hyprland.start", function ()
     hl.exec_cmd("swaybg -i $HOME/Pictures/wallpaper.jpg -m fill")
+    hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
@@ -398,3 +399,19 @@ hl.config({
         disable_hyprland_logo   = true,
     },
 })
+-------------------------------
+---- KEYBINDS (custom) ----
+-------------------------------
+local shotDir = "$HOME/Pictures/Screenshots"
+
+-- Option+Ctrl+3: screenshot layar penuh (simpan + copy ke clipboard)
+hl.bind(mainMod .. " + CTRL + 3", hl.dsp.exec_cmd (
+    [[f=]] .. shotDir .. [[/$(date +%F_%H-%M-%S).png; grim "$f" && wl-copy < "$f" && notify-send "Screenshot" "Full screen captured"]]))
+
+-- Option+Ctrl+4: screenshot area pilihan
+hl.bind(mainMod .. " + CTRL + 4", hl.dsp.exec_cmd(
+    [[f=]] .. shotDir .. [[/$(date +%F_%H-%M-%S).png; grim -g "$(slurp)" "$f" && wl-copy < "$f" && notify-send "Screenshot" "Area captured"]]))
+
+-- Option+Shift+V: riwayat clipboard
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(
+    [[cliphist list | wofi --dmenu --prompt clipboard | cliphist decode | wl-copy]]))
