@@ -378,7 +378,7 @@ hl.window_rule({
 ---- AUTOSTART (custom) ----
 -------------------------------
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("swaybg -i $HOME/Pictures/wallpaper.jpg -m fill")
+    hl.exec_cmd("swaybg -i $HOME/Pictures/062.jpg -m fill")
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("waybar")
