@@ -378,6 +378,7 @@ hl.window_rule({
 hl.on("hyprland.start", function ()
     hl.exec_cmd("swaybg -i $HOME/Pictures/wallpaper.jpg -m fill")
     hl.exec_cmd("wl-paste --watch cliphist store")
+    hl.exec_cmd("hypridle")
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
@@ -415,3 +416,5 @@ hl.bind(mainMod .. " + CTRL + 4", hl.dsp.exec_cmd(
 -- Option+Shift+V: riwayat clipboard
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(
     [[cliphist list | wofi --dmenu --prompt clipboard | cliphist decode | wl-copy]]))
+-- Option+L: kunci layar
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
