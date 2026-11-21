@@ -376,7 +376,25 @@ hl.window_rule({
 ---- AUTOSTART (custom) ----
 -------------------------------
 hl.on("hyprland.start", function ()
+    hl.exec_cmd("swaybg -i $HOME/Pictures/wallpaper.jpg -m fill")
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
+-------------------------------
+---- LOOK & FEEL (custom) ----
+-------------------------------
+hl.config({
+    general = {
+        gaps_in     = 5,
+        gaps_out    = 10,
+        border_size = 2,
+    },
+    decoration = {
+        rounding = 10,
+    },
+    misc = {
+        force_default_wallpaper = 0,
+        disable_hyprland_logo   = true,
+    },
+})
