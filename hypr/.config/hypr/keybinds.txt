@@ -1,0 +1,27 @@
+── APLIKASI ─────────────────────────────
+Opt + Q              Terminal (foot)
+Opt + R              App launcher (wofi)
+Opt + E              File manager (thunar)
+Opt + C              Tutup window aktif
+Opt + L              Kunci layar
+Opt + M              Keluar dari Hyprland
+── WINDOW ───────────────────────────────
+Opt + Panah          Pindah fokus window
+Opt + V              Toggle floating
+Opt + P              Pseudo-tile
+Opt + J              Toggle arah split
+Opt + Klik kiri      Geser window
+Opt + Klik kanan     Resize window
+── WORKSPACE ────────────────────────────
+Opt + 1..0           Pindah ke workspace
+Opt + Shift + 1..0   Pindahkan window ke workspace
+Opt + S              Toggle scratchpad (special)
+Opt + Shift + S      Pindahkan window ke scratchpad
+Opt + Scroll         Workspace berikut/sebelumnya
+── UTILITAS ─────────────────────────────
+Opt + Ctrl + 3       Screenshot layar penuh
+Opt + Ctrl + 4       Screenshot area
+Opt + Shift + V      Riwayat clipboard
+Opt + /              Panduan ini
+── TTY / DARURAT ────────────────────────
+Ctrl + Opt + F2      Pindah ke TTY2 (kalau Hyprland macet)

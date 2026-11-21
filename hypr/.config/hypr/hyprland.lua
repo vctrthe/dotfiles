@@ -24,9 +24,9 @@
 -- See https://wiki.hypr.land/configuring/core/monitors/
 hl.monitor({
     output   = "",
-    mode     = "preferred",
+    mode     = "2940x1912@60",
     position = "auto",
-    scale    = "auto",
+    scale    = 2,
 })
 
 
@@ -64,6 +64,8 @@ local menu = "pkill wofi || wofi --show drun"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 
 
 -----------------------
@@ -418,3 +420,30 @@ hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(
     [[cliphist list | wofi --dmenu --prompt clipboard | cliphist decode | wl-copy]]))
 -- Option+L: kunci layar
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
+
+-------------------------------
+---- INPUT (custom) ----
+-------------------------------
+hl.config({
+    input = {
+        natural_scroll = true,
+        scroll_factor = 0.3,
+    },
+})
+
+-- Option+/: tampilkan cheat sheet keybind
+hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(
+    [[pkill wofi || wofi --dmenu --prompt Keybinds --width 620 --height 640 < $HOME/.config/hypr/keybinds.txt]]))
+
+-------------------------------
+---- PERFORMANCE (VM) ----
+-------------------------------
+hl.config({
+    decoration = {
+        blur   = { enabled = false },
+        shadow = { enabled = false },
+    },
+})
+
+hl.animation({ leaf = "windowsOut", enabled = false })
+hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.2, bezier = "easeOutQuint" })
