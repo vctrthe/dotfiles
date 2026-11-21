@@ -39,6 +39,7 @@ zplug-update() {
 # ===== Tools =====
 source <(fzf --zsh)
 eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(zoxide init zsh)"
 
 # ===== Prompt =====
 source "$ZPLUGINS/powerlevel10k/powerlevel10k.zsh-theme"

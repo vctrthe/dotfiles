@@ -25,3 +25,15 @@ alias up='yay && echo "--- pacnew ---" && pacdiff -o && zplug-update'
 alias orphans='pacman -Qdtq'
 alias errors='systemctl --failed; journalctl -p 3 -b --no-pager | tail -30'
 alias hyprlog='tail -50 "$XDG_RUNTIME_DIR/hypr/$(ls -t "$XDG_RUNTIME_DIR/hypr" | head -1)/hyprland.log"'
+
+# ===== Tools =====
+alias lg='lazygit'
+
+# yazi
+y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [[ -n "$cwd" && "$cwd" != "$PWD" ]] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}

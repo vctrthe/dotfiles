@@ -447,3 +447,5 @@ hl.config({
 
 hl.animation({ leaf = "windowsOut", enabled = false })
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.2, bezier = "easeOutQuint" })
+
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("foot -e yazi"))

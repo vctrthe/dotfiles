@@ -23,3 +23,12 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], o)
   end,
 })
+
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new {
+  cmd = 'lazygit',
+  direction = 'float',
+  hidden = true,
+  float_opts = { border = 'curved' },
+}
+vim.keymap.set('n', '<leader>gg', function() lazygit:toggle() end, { desc = 'Lazy[G]it' })

@@ -2,6 +2,7 @@
 Opt + Q              Terminal (foot)
 Opt + R              App launcher (wofi)
 Opt + E              File manager (thunar)
+Opt + Shift + E      File manager terminal (yazi)
 Opt + C              Tutup window aktif
 Opt + L              Kunci layar
 Opt + M              Keluar dari Hyprland
