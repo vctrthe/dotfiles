@@ -13,3 +13,12 @@ alias up='yay && echo "--- pacnew ---" && pacdiff -o'
 alias orphans='pacman -Qdtq'
 alias errors='systemctl --failed; journalctl -p 3 -b --no-pager | tail -30'
 alias hyprlog='tail -50 "$XDG_RUNTIME_DIR/hypr/$(ls -t "$XDG_RUNTIME_DIR/hypr" | head -1)/hyprland.log"'
+# ===== Dev environment =====
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Go: binary `go install` inside ~/go/bin
+export PATH="$HOME/go/bin:$PATH"
+
+# fnm: auto change Node version when `cd` to folder that has `.nvmrc` / `.node_version`
+eval "$(fnm env --use-on-cd --shell bash)"
