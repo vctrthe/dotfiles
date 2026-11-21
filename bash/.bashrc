@@ -22,3 +22,15 @@ export PATH="$HOME/go/bin:$PATH"
 
 # fnm: auto change Node version when `cd` to folder that has `.nvmrc` / `.node_version`
 eval "$(fnm env --use-on-cd --shell bash)"
+
+# ===== Fastfetch =====
+__ff_enabled() {
+  [[ $- == *i* ]] && [[ -z "$NVIM" ]] && [[ -n "$WAYLAND_DISPLAY" || -n "$SSH_TTY" ]]
+}
+
+if __ff_enabled; then
+  fastfetch
+
+  clear() { command clear; fastfetch; }
+  bind -x '"\C-l": clear'
+fi
