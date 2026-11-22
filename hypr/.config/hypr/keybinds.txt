@@ -5,6 +5,7 @@ Opt + E              File manager (thunar)
 Opt + Shift + E      File manager terminal (yazi)
 Opt + C              Tutup window aktif
 Opt + L              Kunci layar
+Opt + Esc            Power menu (lock/logout/reboot/shutdown)
 Opt + M              Keluar dari Hyprland
 ── WINDOW ───────────────────────────────
 Opt + Panah          Pindah fokus window

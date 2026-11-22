@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# powermenu: lock / logout / reboot / shutdown lewat wofi. Aksi destruktif minta konfirmasi.
+set -euo pipefail
+
+pkill -x wofi && exit 0   # toggle: kalau wofi sedang terbuka, tutup saja
+
+menu() {   # $1 = prompt, $2 = tinggi window
+  wofi --dmenu --prompt "$1" --width 280 --height "$2" --cache-file /dev/null
+}
+
+confirm() {   # "Batal" di urutan pertama supaya Enter tidak sengaja = batal
+  [[ "$(printf 'Batal\nYa, %s\n' "$1" | menu "$1?" 150)" == Ya* ]]
+}
+
+choice=$(printf '%s\n' \
+  "  Lock" \
+  "󰍃  Logout" \
+  "󰜉  Reboot" \
+  "󰐥  Shutdown" | menu "Power" 270) || exit 0
+
+case "$choice" in
+  *Lock)     loginctl lock-session ;;
+  *Logout)   confirm logout   && hyprctl dispatch 'hl.dsp.exit()' ;;
+  *Reboot)   confirm reboot   && systemctl reboot ;;
+  *Shutdown) confirm shutdown && systemctl poweroff ;;
+esac

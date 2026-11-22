@@ -467,3 +467,6 @@ hl.config({
 -- Notifikasi: Option+N tutup satu, Option+Shift+N tutup semua
 hl.bind(mainMod .. " + N",         hl.dsp.exec_cmd("makoctl dismiss"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss --all"))
+
+-- Option+Esc: power menu
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("powermenu"))
