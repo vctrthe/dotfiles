@@ -4,9 +4,11 @@ archlinuxarm-keyring
 base
 base-devel
 bash-completion
+bat
 btop
 cliphist
 efibootmgr
+eza
 fastfetch
 fd
 firefox

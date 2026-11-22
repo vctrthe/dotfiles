@@ -21,7 +21,7 @@ autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons=always $realpath'
 
 # ===== Plugins =====
 ZPLUGINS="$HOME/.local/share/zsh/plugins"
@@ -37,6 +37,12 @@ zplug-update() {
 }
 
 # ===== Tools =====
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#313244,bg:-1,spinner:#f5e0dc,hl:#f38ba8 \
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+  --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+  --color=selected-bg:#45475a,border:#6c7086,label:#cdd6f4 \
+  --border=rounded --layout=reverse"
 source <(fzf --zsh)
 eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh)"

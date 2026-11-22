@@ -50,6 +50,7 @@ for repo in Aloxaf/fzf-tab zdharma-continuum/fast-syntax-highlighting romkatv/po
 done
 
 # ---------------------------------------------------------------
+command -v ya >/dev/null && ya pkg install || true
 log "7/10 Symlink dotfiles (stow)"
 if [[ -n "$(git -C "$DOTFILES" status --porcelain)" ]]; then
   warn "There are changes that haven't been commited in the dotfiles. Commit first, then re-run."

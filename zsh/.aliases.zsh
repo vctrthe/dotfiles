@@ -37,3 +37,10 @@ y() {
   [[ -n "$cwd" && "$cwd" != "$PWD" ]] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+
+# ===== Modern CLI =====
+alias ls='eza --icons=auto --group-directories-first'
+alias ll='eza -lh --icons=auto --git --group-directories-first'
+alias la='eza -lah --icons=auto --git --group-directories-first'
+alias lt='eza --tree --level=2 --icons=auto'
+alias cat='bat --paging=never --style=plain'
