@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# waybar-updates: output JSON untuk modul waybar custom/updates.
+# waybar-updates --run : buka foot, jalankan `up`, lalu refresh modul.
+set -uo pipefail
+
+if [[ ${1:-} == --run ]]; then
+  foot -e zsh -ic 'up; print; read -sk "?Selesai. Tekan tombol apa saja untuk menutup..."'
+  pkill -RTMIN+8 waybar          # minta waybar menjalankan ulang modul (signal 8)
+  exit 0
+fi
+
+repo=$( (checkupdates 2>/dev/null || true) | wc -l )
+aur=$( (yay -Qua 2>/dev/null || true) | wc -l )
+total=$(( repo + aur ))
+
+if (( total == 0 )); then
+  echo '{"text": "", "tooltip": "Sistem up to date", "class": "none"}'
+else
+  printf '{"text": "󰏗 %d", "tooltip": "Update tersedia\\nRepo: %d\\nAUR: %d\\n\\nKlik untuk update", "class": "pending"}\n' \
+    "$total" "$repo" "$aur"
+fi

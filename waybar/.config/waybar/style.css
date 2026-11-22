@@ -34,3 +34,31 @@ window#waybar {
 #memory     { color: #94e2d5; }
 #network    { color: #89b4fa; }
 #pulseaudio { color: #f5c2e7; }
+
+/* ===== Step 39 ===== */
+#custom-updates {
+  padding: 0 12px;
+  color: #fab387;   /* peach: menarik perhatian tanpa terkesan error */
+}
+
+#custom-power {
+  padding: 0 14px 0 10px;
+  color: #f38ba8;
+}
+#custom-power:hover {
+  background: rgba(243, 139, 168, 0.15);
+  border-radius: 8px;
+}
+
+#pulseaudio.muted {
+  color: #6c7086;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border: 1px solid #89b4fa;
+  border-radius: 8px;
+}
+tooltip label {
+  color: #cdd6f4;
+}

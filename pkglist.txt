@@ -40,6 +40,7 @@ noto-fonts
 openssh
 pacman-contrib
 papirus-icon-theme
+pavucontrol
 pipewire
 pipewire-pulse
 poppler
