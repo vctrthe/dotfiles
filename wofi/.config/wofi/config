@@ -1,0 +1,9 @@
+width=600
+height=420
+location=center
+prompt=Cari aplikasi...
+insensitive=true
+allow_images=true
+image_size=28
+no_actions=true
+gtk_dark=true

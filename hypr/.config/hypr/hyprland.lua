@@ -417,7 +417,7 @@ hl.bind(mainMod .. " + CTRL + 4", hl.dsp.exec_cmd(
 
 -- Option+Shift+V: riwayat clipboard
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd(
-    [[cliphist list | wofi --dmenu --prompt clipboard | cliphist decode | wl-copy]]))
+    [[pkill -x wofi || cliphist list | wofi --dmenu --prompt clipboard | cliphist decode | wl-copy]]))
 -- Option+L: kunci layar
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
 
@@ -451,3 +451,19 @@ hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.2, bezier = "easeOutQ
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("foot -e yazi"))
 
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("wallpaper"))
+
+-------------------------------
+---- THEME: Catppuccin Mocha ----
+-------------------------------
+hl.config({
+    general = {
+        col = {
+            active_border   = { colors = { "rgba(89b4faee)", "rgba(cba6f7ee)" }, angle = 45 },  -- blue -> mauve
+            inactive_border = "rgba(45475aaa)",                                                -- surface1
+        },
+    },
+})
+
+-- Notifikasi: Option+N tutup satu, Option+Shift+N tutup semua
+hl.bind(mainMod .. " + N",         hl.dsp.exec_cmd("makoctl dismiss"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss --all"))
