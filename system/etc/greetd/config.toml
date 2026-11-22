@@ -1,0 +1,7 @@
+[terminal]
+vt = 1
+
+[default_session]
+# Hyprland dijalankan lewat login shell agar .zprofile (PATH, EDITOR) ikut termuat
+command = "tuigreet --time --remember --asterisks --greeting 'Arch Linux ARM' --cmd 'zsh -l -c start-hyprland'"
+user = "greeter"

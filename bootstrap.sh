@@ -80,7 +80,7 @@ sudo nft -c -t /etc/nftables.conf
 # ---------------------------------------------------------------
 log "9/10 System and User service"
 sudo systemctl enable --now NetworkManager sshd systemd-timesyncd nftables paccache.timer
-sudo systemctl enable systemd-boot-update.service
+sudo systemctl enable systemd-boot-update.service greetd.service
 sudo systemctl reload sshd
 systemctl --user daemon-reload
 systemctl --user enable --now sys-check.timer
