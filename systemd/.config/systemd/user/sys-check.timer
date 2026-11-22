@@ -1,0 +1,10 @@
+[Unit]
+Description=Run sys-check everyday after logging in
+
+[Timer]
+OnStartupSec=3min
+OnCalendar=*-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

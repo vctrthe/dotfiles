@@ -1,0 +1,6 @@
+[Unit]
+Description=Check system update and dotfiles status
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sys-check

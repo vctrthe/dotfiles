@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Daily check: package update + dotfiles status
+set -euo pipefail
+
+DOTFILES="$HOME/dotfiles"
+msgs=()
+
+# Update available. checkupdates use temporary database
+repo=$( (checkupdates 2>/dev/null || true) | wc -l)
+aur=$( (yay -Qua 2>/dev/null || true) | wc -l)
+if (( repo + aur > 0 )); then
+  msgs+=("Update available: ${repo} repo, ${aur} AUR. Run 'up'.")
+fi
+
+# Dotfiles changes that haven't been committed/pushed
+dirty=$(git -C "$DOTFILES" status --porcelain | wc -l)
+if (( dirty > 0 )); then
+  msgs+=("Dotfiles: ${dirty} file haven't been committed.")
+fi
+unpushed=$( (git -C "$DOTFILES" log --oneline '@{u}..' 2>/dev/null || true) | wc -l )
+if (( unpushed > 0 )); then
+  msgs+=("Dotfiles: ${unpushed} commit hasn't been pushed.")
+fi
+
+if (( ${#msgs[@]} > 0 )); then
+  printf '%s\n' "${msgs[@]}"
+  notify-send -a sys-check "System check" "$(printf '%s\n' "${msgs[@]}")" || true
+else
+  echo "All done: system is up to date, dotfiles clean."
+fi
