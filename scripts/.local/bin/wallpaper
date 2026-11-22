@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# wallpaper [file]: ganti wallpaper desktop + lock screen sekaligus.
+# Tanpa argumen: pilih dari ~/Pictures/wallpapers lewat wofi.
+set -euo pipefail
+
+DIR="$HOME/Pictures/wallpapers"
+CURRENT="$DIR/current"
+
+if [[ $# -ge 1 ]]; then
+  pick="$(realpath "$1")"
+else
+  name=$(find "$DIR" -maxdepth 1 -type f \
+           \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) \
+           -printf '%f\n' | sort | wofi --dmenu --prompt Wallpaper) || exit 0
+  pick="$DIR/$name"
+fi
+
+[[ -f "$pick" ]] || { echo "File tidak ditemukan: $pick" >&2; exit 1; }
+
+ln -sfn "$pick" "$CURRENT"                                 # sumber kebenaran untuk hyprpaper & hyprlock
+hyprctl hyprpaper wallpaper ",$pick,cover" >/dev/null      # ganti desktop saat itu juga
+notify-send -a wallpaper "Wallpaper" "$(basename "$pick")" || true

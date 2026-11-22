@@ -21,6 +21,7 @@ gvfs
 hypridle
 hyprland
 hyprlock
+hyprpaper
 hyprpolkitagent
 imagemagick
 jq
@@ -46,7 +47,6 @@ ripgrep
 slurp
 stow
 sudo
-swaybg
 thunar
 tree-sitter-cli
 ttf-jetbrains-mono-nerd

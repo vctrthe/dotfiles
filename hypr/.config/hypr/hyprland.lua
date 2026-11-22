@@ -378,7 +378,7 @@ hl.window_rule({
 ---- AUTOSTART (custom) ----
 -------------------------------
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("swaybg -i $HOME/Pictures/062.jpg -m fill")
+    hl.exec_cmd("hyprpaper")
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("waybar")
@@ -449,3 +449,5 @@ hl.animation({ leaf = "windowsOut", enabled = false })
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.2, bezier = "easeOutQuint" })
 
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("foot -e yazi"))
+
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("wallpaper"))

@@ -23,6 +23,7 @@ Opt + Scroll         Workspace berikut/sebelumnya
 Opt + Ctrl + 3       Screenshot layar penuh
 Opt + Ctrl + 4       Screenshot area
 Opt + Shift + V      Riwayat clipboard
+Opt + W              Ganti wallpaper
 Opt + /              Panduan ini
 ── TTY / DARURAT ────────────────────────
 Ctrl + Opt + F2      Pindah ke TTY2 (kalau Hyprland macet)
