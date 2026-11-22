@@ -62,3 +62,8 @@ tooltip {
 tooltip label {
   color: #cdd6f4;
 }
+
+#clock.date {
+  color: #a6adc8;
+  font-weight: normal;
+}
