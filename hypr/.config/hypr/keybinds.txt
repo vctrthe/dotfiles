@@ -1,5 +1,6 @@
 ── APLIKASI ─────────────────────────────
 Opt + Q              Terminal (foot)
+Opt + `              Terminal dropdown (toggle)
 Opt + R              App launcher (wofi)
 Opt + E              File manager (thunar)
 Opt + Shift + E      File manager terminal (yazi)

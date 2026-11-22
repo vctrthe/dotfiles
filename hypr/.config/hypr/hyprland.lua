@@ -531,3 +531,21 @@ hl.config({
         inactive_opacity = 0.92,
     },
 })
+
+-------------------------------
+---- DROPDOWN TERMINAL ----
+-------------------------------
+hl.window_rule({
+    name      = "dropdown-terminal",
+    match     = { class = "^dropdown$" },
+    float     = true,
+    size      = "monitor_w*0.96 monitor_h*0.45",
+    move      = "monitor_w*0.02 48",
+    workspace = "special:dropdown silent",
+})
+
+-- Special workspace (dropdown & scratchpad Option+S) muncul dengan slide vertikal
+hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3, bezier = "easeOutQuint", style = "slidevert" })
+
+-- Option+`: toggle terminal dropdown
+hl.bind(mainMod .. " + grave", hl.dsp.exec_cmd("dropdown"))

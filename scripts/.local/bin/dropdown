@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# dropdown: terminal ala Quake. Jalankan foot khusus sekali, lalu toggle special workspace-nya.
+set -euo pipefail
+
+has_dropdown() {
+  hyprctl clients -j | jq -e '.[] | select(.class == "dropdown")' >/dev/null
+}
+
+if ! has_dropdown; then
+  foot --app-id dropdown >/dev/null 2>&1 &   # window rule memindahkannya ke special:dropdown
+  disown
+  for _ in {1..40}; do                       # tunggu window muncul (maks ~2 detik)
+    has_dropdown && break
+    sleep 0.05
+  done
+fi
+
+hyprctl dispatch 'hl.dsp.workspace.toggle_special("dropdown")' >/dev/null
