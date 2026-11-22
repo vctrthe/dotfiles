@@ -4,6 +4,9 @@ set -euo pipefail
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ZPLUGINS="$HOME/.local/share/zsh/plugins"
 
+log()  { printf '\n\033[1;34m==> %s\033[0m\n' "$*"; }
+warn() { printf '\033[1;33m[!] %s\033[0m\n' "$*"; }
+
 [[ $EUID -ne 0 ]] || { echo "Run as regular user, not root."; exit 1; }
 sudo -v
 
