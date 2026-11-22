@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Update pkglist.txt / aurlist.txt in dotfiles...
+When = PostTransaction
+Exec = /usr/bin/bash -c 'u=victor; d=/home/$u/dotfiles; [ -d "$d" ] || exit 0; pacman -Qqen > "$d/pkglist.txt"; pacman -Qqem | grep -v -- "-debug$" > "$d/aurlist.txt"; chown $u:$u "$d/pkglist.txt" "$d/aurlist.txt"'
