@@ -470,3 +470,64 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("makoctl dismiss --all"))
 
 -- Option+Esc: power menu
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("powermenu"))
+
+-------------------------------
+---- WINDOW RULES (custom) ----
+-------------------------------
+-- Mixer audio: floating kecil di tengah
+hl.window_rule({
+    name   = "float-pavucontrol",
+    match  = { class = "^(org\\.pulseaudio\\.pavucontrol|pavucontrol)$" },
+    float  = true,
+    size   = "900 600",
+    center = true,
+})
+
+-- Dialog file (GTK / portal / Firefox): floating di tengah
+hl.window_rule({
+    name   = "float-file-dialogs",
+    match  = { title = "^(Open File|Open Files|Save File|Save As|Open Folder|Select Folder|File Upload|Choose Files?).*$" },
+    float  = true,
+    size   = "1000 650",
+    center = true,
+})
+hl.window_rule({
+    name   = "float-portal-gtk",
+    match  = { class = "^xdg-desktop-portal-gtk$" },
+    float  = true,
+    center = true,
+})
+
+-- Progress copy/move thunar
+hl.window_rule({
+    name   = "float-thunar-progress",
+    match  = { title = "^File Operation Progress$" },
+    float  = true,
+    center = true,
+})
+
+-- Firefox Picture-in-Picture: kecil di pojok kanan bawah, ikut ke semua workspace
+hl.window_rule({
+    name              = "pip-firefox",
+    match             = { title = "^Picture-in-Picture$" },
+    float             = true,
+    pin               = true,
+    keep_aspect_ratio = true,
+    size              = "640 360",
+    move              = "monitor_w-660 monitor_h-380",
+})
+
+-- Firefox selalu opaque (tidak ikut transparan saat tidak aktif)
+hl.window_rule({
+    name   = "opaque-firefox",
+    match  = { class = "^firefox$" },
+    opaque = true,
+})
+
+-- Window tidak aktif sedikit transparan
+hl.config({
+    decoration = {
+        active_opacity   = 1.0,
+        inactive_opacity = 0.92,
+    },
+})
