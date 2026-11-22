@@ -50,6 +50,7 @@ qt5-wayland
 qt6-wayland
 ripgrep
 slurp
+starship
 stow
 sudo
 thunar

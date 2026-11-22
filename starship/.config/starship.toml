@@ -1,0 +1,77 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Dua baris tanpa filler: baris pertama berhenti di segment terakhir,
+# tidak pernah diisi sampai tepi kanan (aman saat resize/reflow).
+format = """
+[╭─](overlay0) $os$directory$git_branch$git_status$cmd_duration$username$hostname$time
+[╰─](overlay0) $character"""
+
+add_newline = true
+palette = "catppuccin_mocha"
+
+[os]
+disabled = false
+style = "text"
+format = "[$symbol]($style) "
+
+[os.symbols]
+Arch = ""
+Linux = ""     # Arch Linux ARM kadang terdeteksi sebagai Linux generik
+Macos = ""
+
+[directory]
+style = "bold blue"
+format = "[󰉋 $path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "green"
+format = "[on $symbol$branch]($style) "
+
+[git_status]
+style = "yellow"
+format = "([$all_status$ahead_behind]($style) )"
+
+[cmd_duration]
+min_time = 3000
+style = "peach"
+format = "[took $duration]($style) "
+
+[username]
+style_user = "lavender"
+style_root = "bold red"
+format = "[with $user]($style)"
+
+[hostname]
+ssh_only = true
+style = "lavender"
+format = "[@$hostname]($style) "
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+style = "subtext0"
+format = "[at  $time]($style)"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+text      = "#cdd6f4"
+subtext0  = "#a6adc8"
+overlay0  = "#6c7086"
+surface1  = "#45475a"
+lavender  = "#b4befe"
+blue      = "#89b4fa"
+sky       = "#89dceb"
+teal      = "#94e2d5"
+green     = "#a6e3a1"
+yellow    = "#f9e2af"
+peach     = "#fab387"
+red       = "#f38ba8"
+mauve     = "#cba6f7"

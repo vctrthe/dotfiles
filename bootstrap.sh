@@ -44,7 +44,7 @@ npm install -g npm pnpm prettier
 # ---------------------------------------------------------------
 log "6/10 Zsh Plugin"
 mkdir -p "$ZPLUGINS"
-for repo in Aloxaf/fzf-tab zdharma-continuum/fast-syntax-highlighting romkatv/powerlevel10k; do
+for repo in Aloxaf/fzf-tab zdharma-continuum/fast-syntax-highlighting; do
   dir="$ZPLUGINS/${repo#*/}"
   [[ -d $dir ]] || git clone --depth 1 "https://github.com/$repo" "$dir"
 done

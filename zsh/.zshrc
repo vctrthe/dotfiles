@@ -4,10 +4,6 @@ if [[ -o interactive && -z $NVIM && ( -n $WAYLAND_DISPLAY || -n $SSH_TTY ) ]]; t
   typeset -g __FF_ENABLED=1
 fi
 
-# ===== Powerlevel10k instant prompt =====
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # ===== History =====
 HISTFILE=~/.zsh_history
@@ -48,8 +44,7 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(zoxide init zsh)"
 
 # ===== Prompt =====
-source "$ZPLUGINS/powerlevel10k/powerlevel10k.zsh-theme"
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+eval "$(starship init zsh)"
 
 # ===== Aliases & secrets =====
 [[ -f ~/.aliases.zsh ]] && source ~/.aliases.zsh
